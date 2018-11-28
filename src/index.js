@@ -1,3 +1,3 @@
 import square from './some';
-
-square(5);
+const myName = 3;
+square(myName);
