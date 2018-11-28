@@ -13,6 +13,21 @@ let conf = {
       errors: true,
     },
   },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: '/node-modules/',
+      },
+    ],
+  },
 };
 
-module.exports = conf;
+module.exports = (env, options) => {
+  let production = options.mode === 'production';
+  conf.devtool = production ? false : 'eval-sourcemap';
+  console.log(options);
+  
+  return conf;
+};
